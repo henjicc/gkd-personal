@@ -117,6 +117,19 @@ export default defineGkdApp({
           ],
           snapshotUrls: 'https://i.gkd.li/i/16054268',
         },
+        {
+          key: 14,
+          name: '点击坐标-无跳过节点',
+          // 跳过按钮未暴露节点，skip 为全屏空 View；本机 7.136.0 快照未公开
+          position: {
+            left: 'width * 0.875',
+            top: 'width * 0.17',
+          },
+          matches: [
+            '[vid="ad_mark"][visibleToUser=true]',
+            '[vid="ad_parent"] > View[vid="skip"][childCount=0][visibleToUser=true][width>=720]',
+          ],
+        },
       ],
       order: -10,
     },
