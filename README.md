@@ -4,7 +4,11 @@
 
 ## 订阅链接
 
-**[复制此链接添加到 GKD](https://raw.githubusercontent.com/henjicc/gkd-personal/main/dist/gkd.json5)**
+**[首次添加：完整 v3 订阅](https://raw.githubusercontent.com/henjicc/gkd-personal/bf7d9587f8e2ae297f673d79a2bf4a64a6b067b1/dist/gkd.json5)**
+
+首次导入链接固定到完整开屏基线，避免分支下载地址的旧缓存。文件内的 `updateUrl` 指向本仓库 `main`，以后仍自动获取新版本，不需要重新添加或更换链接。
+
+[最新订阅文件](https://raw.githubusercontent.com/henjicc/gkd-personal/main/dist/gkd.json5)
 
 GKD → 订阅 → 添加订阅，粘贴链接。之后在订阅页下拉刷新即可检测更新。订阅 ID 为 `1874130597`，独立于原订阅 `667`。
 
