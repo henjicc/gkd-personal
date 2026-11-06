@@ -4,11 +4,9 @@
 
 ## 订阅链接
 
-**[首次添加：完整 v3 订阅](https://raw.githubusercontent.com/henjicc/gkd-personal/bf7d9587f8e2ae297f673d79a2bf4a64a6b067b1/dist/gkd.json5)**
+**[订阅链接（main）](https://raw.githubusercontent.com/henjicc/gkd-personal/main/dist/gkd.json5)**
 
-首次导入链接固定到完整开屏基线，避免分支下载地址的旧缓存。文件内的 `updateUrl` 指向本仓库 `main`，以后仍自动获取新版本，不需要重新添加或更换链接。
-
-[最新订阅文件](https://raw.githubusercontent.com/henjicc/gkd-personal/main/dist/gkd.json5)
+必须使用指向 `main` 的链接。GKD 1.13.0 检测更新时使用添加订阅时保存的链接，并以它为基准解析 `checkUpdateUrl`，不会改用文件内的 `updateUrl`。固定到某个提交的链接永远停在该版本，下拉刷新只会提示“暂无更新”。已用旧固定链接添加的，在 GKD 订阅页编辑该订阅，把链接改为上面的地址即可，订阅 ID 和规则开关不变。刚推送后 raw 地址可能有几分钟缓存。
 
 GKD → 订阅 → 添加订阅，粘贴链接。之后在订阅页下拉刷新即可检测更新。订阅 ID 为 `1874130597`，独立于原订阅 `667`。
 
