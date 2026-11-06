@@ -8,7 +8,7 @@ export default defineGkdApp({
     {
       key: 0,
       name: '全屏广告-首页弹窗',
-      desc: '点击网页弹窗底部的关闭按钮',
+      desc: '首页网页弹窗出现时返回关闭',
       fastQuery: true,
       activityIds: '.home.HomeActivity',
       actionMaximum: 1,
@@ -16,10 +16,10 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
-          // 网页内关闭按钮不可点击，直接触屏点击中心
-          action: 'clickCenter',
+          // 弹窗内容每次不同，只认弹窗窗口的全屏网页容器；用户实测返回可关闭
+          action: 'back',
           matches:
-            '[vid="webContainer"] >n View[childCount=2] > View[index=0][childCount>=3] + View[index=1][childCount=1][width<150 && height<150] > Image[childCount=0][visibleToUser=true]',
+            '[vid="fl_container"][depth=3] > [vid="webContainer"][width>=1000 && height>=2000] > FrameLayout > WebView[visibleToUser=true]',
         },
       ],
     },
