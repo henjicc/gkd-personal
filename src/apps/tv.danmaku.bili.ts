@@ -8,6 +8,7 @@ export default defineGkdApp({
     {
       key: -1,
       name: '开屏广告',
+      desc: '点击开屏跳过按钮，使用触屏点击兼容本机。',
       enable: true,
       fastQuery: true,
       matchRoot: true,
