@@ -1,0 +1,59 @@
+name: Check and publish subscription
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'tsconfig.json'
+      - '.github/workflows/subscription.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'tsconfig.json'
+      - '.github/workflows/subscription.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: subscription-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check-and-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '11.9.0'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm build
+      - name: Publish generated subscription
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          if [ -z "$(git status --porcelain -- dist)" ]; then
+            echo "Subscription unchanged"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- dist/gkd.json5 dist/gkd.version.json5 dist/README.md dist/CHANGELOG.md
+          git commit -m 'chore: publish subscription'
+          git push origin HEAD:main
